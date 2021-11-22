@@ -1,13 +1,13 @@
 <template>
   <div >
   <Followers
-   :followers="followers"
-    @ToRemoveFollower="ToRemoveFollower($event)"></Followers>
+   :followers="followers"></Followers>
   </div>
 </template>
 
 <script>
 import  Followers from './components/Followers'
+import eventBus from './Servises/eventBus.js'
 
 export default {
   name: 'App',
@@ -33,6 +33,13 @@ export default {
              this.followers.splice(FollowerIndex,1)
         }
       },
+       created() {
+         eventBus.$on('ToRemoveFollower',data=>{
+           this.ToRemoveFollower(data)
+
+         })
+         
+       },
   };
 
 </script>

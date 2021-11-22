@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 <template>
 <div>
 <ul>
@@ -12,12 +13,13 @@
 </template>
  <script>
 
+import eventBus from '../Servises/eventBus.js'
  export default {
       name:"Followers",
        props:["followers"],
      methods: {
          sendFollower(id){
-             this.$emit("ToRemoveFollower",id)
+             eventBus.$emit("ToRemoveFollower",id)
          },
      },
  };
