@@ -1,28 +1,43 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div >
+  <Followers
+   :followers="followers"
+    @ToRemoveFollower="ToRemoveFollower($event)"></Followers>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import  Followers from './components/Followers'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    Followers,
+    },
+     data() {
+       return {
+         followers:[
+           {id:12 , name:"ali"},
+           {id:14 , name:"hassan"}, 
+          {id:16 , name:"fatemeh"},   
+          {id:19 , name:"hossein"},    
+         {id:10 , name:"sajjad"},
+         ],
+       };
+     },
+      methods: {
+        ToRemoveFollower(id){
+           let FollowerIndex =this.followers.findIndex(
+             (follower) =>follower.id == id 
+             );
+             this.followers.splice(FollowerIndex,1)
+        }
+      },
+  };
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+      text-align: center;
+
 </style>
